@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="wrap_content"
+	android:background="@drawable/denel_background">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:paddingTop="20dp"
+		android:id="@+id/mainLinearLayout1"
+		android:paddingLeft="10dp">
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:layout_width="match_parent"
+			android:hint="Filter Contacts..."
+			android:id="@+id/contact_search"
+			android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="horizontal"
+		android:layout_below="@id/mainLinearLayout1"
+		android:id="@+id/mainLinearLayout2"
+		android:paddingLeft="10dp">
+
+		<ListView
+			android:layout_height="wrap_content"
+			android:layout_width="250dp"
+			android:id="@+id/contacts_listview"/>
+
+	</LinearLayout>
+
+	<ScrollView
+		android:id="@+id/mainScrollView"
+		android:layout_below="@id/mainLinearLayout1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true">
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="wrap_content"
+			android:orientation="vertical"
+			android:id="@+id/contact_details">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Vinnesh Singh"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_width="wrap_content"
+				android:textStyle="bold|italic"
+				android:paddingLeft="10dp"
+				android:id="@+id/header_name"/>
+
+			<View
+				android:layout_height="1dp"
+				android:background="?android:attr/dividerVertical"
+				android:layout_width="match_parent"/>
+
+			<GridLayout
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:columnCount="2"
+				android:padding="10dp">
+
+				<GridLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:columnCount="2"
+					android:id="@+id/GridLayout_contact_division"
+					android:padding="10dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:text="Division:"
+						android:layout_width="wrap_content"
+						android:textStyle="bold"
+						android:padding="10dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:text="Dynamics"
+						android:layout_width="wrap_content"
+						android:id="@+id/division_name"
+						android:padding="10dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:text="Department:"
+						android:layout_width="wrap_content"
+						android:textStyle="bold"
+						android:padding="10dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:text="Strategic Engineering"
+						android:layout_width="wrap_content"
+						android:id="@+id/dept_name"
+						android:padding="10dp"
+						android:minWidth="180dp"
+						android:maxWidth="180dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:text="Title:"
+						android:layout_width="wrap_content"
+						android:textStyle="bold"
+						android:padding="10dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:text="Main Text"
+						android:layout_width="wrap_content"
+						android:id="@+id/contact_title"
+						android:padding="10dp"
+						android:minWidth="180dp"
+						android:maxWidth="180dp"/>
+
+				</GridLayout>
+
+				<ImageView
+					android:layout_height="200dp"
+					android:layout_width="200dp"
+					android:src="@drawable/profile_pic"
+					android:id="@+id/contact_picture"/>
+
+			</GridLayout>
+
+			<View
+				android:layout_height="1dp"
+				android:background="?android:attr/dividerVertical"
+				android:layout_width="match_parent"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Product Expertise"
+				android:layout_width="wrap_content"
+				android:padding="5dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+			<View
+				android:layout_height="1dp"
+				android:background="?android:attr/dividerVertical"
+				android:layout_width="match_parent"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Umkhonto, A-Darter, Mokopa, Ingwe"
+				android:layout_width="wrap_content"
+				android:padding="5dp"
+				android:id="@+id/contact_products"
+				android:minWidth="500dp"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Region Focus"
+				android:layout_width="wrap_content"
+				android:padding="5dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+			<View
+				android:layout_height="1dp"
+				android:background="?android:attr/dividerVertical"
+				android:layout_width="match_parent"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Africa, Europe"
+				android:layout_width="wrap_content"
+				android:padding="5dp"
+				android:textSize="15sp"
+				android:id="@+id/contact_region"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Work Interests"
+				android:layout_width="wrap_content"
+				android:padding="5dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+			<View
+				android:layout_height="1dp"
+				android:background="?android:attr/dividerVertical"
+				android:layout_width="match_parent"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Missile Design, Flight Control, Simulation, Matlab"
+				android:layout_width="wrap_content"
+				android:padding="5dp"
+				android:id="@+id/work_interests"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Other Interests"
+				android:layout_width="wrap_content"
+				android:padding="5dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+			<View
+				android:layout_height="1dp"
+				android:background="?android:attr/dividerVertical"
+				android:layout_width="match_parent"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Basketball, Camping, Sky Diving, Share Trading"
+				android:layout_width="wrap_content"
+				android:padding="5dp"
+				android:id="@+id/personal_interests"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+	<View
+		android:layout_height="match_parent"
+		android:background="?android:attr/dividerHorizontal"
+		android:layout_width="1dp"
+		android:layout_toLeftOf="@id/contact_details"/>
+
+</RelativeLayout>
+
