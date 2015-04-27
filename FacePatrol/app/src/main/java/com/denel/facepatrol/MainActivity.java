@@ -1,5 +1,6 @@
 package com.denel.facepatrol;
 
+import android.net.Uri;
 import android.app.*;
 import android.os.*;
 import android.widget.*;
@@ -7,16 +8,22 @@ import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import javax.crypto.*;
 import android.text.*;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import java.util.*;
 import android.util.Log;
 
 import android.widget.AdapterView.*; // Java encryption of downloaded SQL databases
 
-public class MainActivity extends Activity 
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener 
 {
 	SQLiteDatabase db;
 	public SimpleCursorAdapter cursor_adapter;
@@ -29,12 +36,30 @@ public class MainActivity extends Activity
 	
 	// detail page textview variables
 	TextView header,division,dept,title,products,region,work,personal;
+	String contact_phone = "+2320343";
+	String contact_email = "plus@gmail.com";
+	
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState)
     {
        	super.onCreate(savedInstanceState);
        	setContentView(R.layout.main);
+		
+		// Set up the action bar.
+        final ActionBar actionBar = getActionBar();
+		
+		// Specify that the Home/Up button should not be enabled, since there is no hierarchical
+        // parent.
+        actionBar.setHomeButtonEnabled(false);
+
+        // Specify that we will be displaying tabs in the action bar.
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		// setup tabs title - EXAMPLE - Doesn't work like that
+		//actionBar.addTab(actionBar.newTab().setText("Contact Search"));
+		//actionBar.addTab(actionBar.newTab().setText("Denel Organogram"));
+		//actionBar.addTab(actionBar.newTab().setText("Denel Products"));
 		
 		// set main_xml variables
 		header = (TextView)findViewById(R.id.header_name);
@@ -60,16 +85,17 @@ public class MainActivity extends Activity
 		String surname = db_cursor.getString(db_cursor.getColumnIndex("surname"));
 
 		// set listview to textview
-		header.setText(name+ " " + surname);				
+		header.setText(name+ " " + surname);
 
 		division.setText(db_cursor.getString(db_cursor.getColumnIndex("division")));
 		dept.setText(db_cursor.getString(db_cursor.getColumnIndex("dept")));
 		title.setText(db_cursor.getString(db_cursor.getColumnIndex("title")));
+		contact_email = db_cursor.getString(db_cursor.getColumnIndex("email"));
+		contact_phone = db_cursor.getString(db_cursor.getColumnIndex("phone"));
 		region.setText(db_cursor.getString(db_cursor.getColumnIndex("region")));
 		products.setText(db_cursor.getString(db_cursor.getColumnIndex("product")));
 		work.setText(db_cursor.getString(db_cursor.getColumnIndex("work_int")));
 		personal.setText(db_cursor.getString(db_cursor.getColumnIndex("personal")));
-		
 		
 		// map the listview (from contact_list.xml) layout with columns of the cursor
 		cursor_adapter = new SimpleCursorAdapter(
@@ -101,6 +127,8 @@ public class MainActivity extends Activity
 				division.setText(cursor.getString(cursor.getColumnIndex("division")));
 				dept.setText(cursor.getString(cursor.getColumnIndex("dept")));
 				title.setText(cursor.getString(cursor.getColumnIndex("title")));
+				contact_email = cursor.getString(cursor.getColumnIndex("email"));
+				contact_phone = cursor.getString(db_cursor.getColumnIndex("phone"));
 				region.setText(cursor.getString(cursor.getColumnIndex("region")));
 				products.setText(cursor.getString(cursor.getColumnIndex("product")));
 				work.setText(cursor.getString(cursor.getColumnIndex("work_int")));
@@ -144,6 +172,46 @@ public class MainActivity extends Activity
 		});
 			
 	}
+	
+	public void ContactPhone (View view){
+		Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+		phoneIntent.setData(Uri.parse(contact_phone));
+		startActivity(Intent.createChooser(phoneIntent,"Phone Number"));
+		finish();
+	}
+	
+	public void ContactEmail (View view){
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		emailIntent.setData(Uri.parse("mailto:"));		
+		emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{contact_email});
+		emailIntent.setType("message/rfc822");
+		startActivity(Intent.createChooser(emailIntent,"Send Email..."));
+		finish();
+	}
+
+	//close database ondestroy method activated
+	@Override
+	protected void onDestroy()
+	{
+		// TODO: Implement this method
+		db.close();
+		super.onDestroy();
+	}
+	
+	@Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+        // When the given tab is selected, switch to the corresponding page in the ViewPager.
+        //mViewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    }
+	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -299,14 +367,14 @@ public class MainActivity extends Activity
 						"OR work_int like '%" + constraint + "%' " +
 						"OR personal like '%" + constraint + "%' "
 						,null,group_by, group_by + " in " + userid_sequence,"name");
-	}	
+	}
 	
 	public void initialData()
 	{
 		String dataCols = "(name, surname, division, dept, title, email, phone, region, personal)";
-		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Vinnesh', 'Singh', 'Land Systems', 'Integration', 'Engineer', 'vinnesh@gmail.com','+23593392','All', 'running, reading books, superbikes, motoracing, braaie');");		
-		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Paulin', 'Kantu', 'Dynamics', 'Engineering', 'Engineer', 'pkantue@gmail.com','+23593229','All', 'basketball, braaie, model aircraft, camping');");
-		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Pamela', 'Nozipho', 'DCO', 'Communications', 'External', 'pam.e@gmail.com','+23339392','Middle-East', 'painting, baking, boxing, camping');");		
+		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Vinnesh', 'Singh', 'Land Systems', 'Integration', 'Engineer', 'vinnesh@gmail.com','+23593392','All', 'running, reading books, superbikes, motoracing, braaie');");
+		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Paulin', 'Kantu', 'Dynamics', 'Engineering', 'Engineer', 'pkantue@gmail.com','+27834940168','All', 'basketball, braaie, model aircraft, camping');");
+		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Pamela', 'Nozipho', 'DCO', 'Communications', 'External', 'pam.e@gmail.com','+23339392','Middle-East', 'painting, baking, boxing, camping');");
 		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Tebogo', 'Ramaile', 'Aviation', 'Quality', 'Engineer', 'tebogoR@gmail.com','+23321392','Europe', 'running, braaie, motoracing, tennis');");
 	}	
 }

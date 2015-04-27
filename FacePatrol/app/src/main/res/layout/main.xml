@@ -2,8 +2,7 @@
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_height="match_parent"
-	android:layout_width="wrap_content"
-	android:background="@drawable/denel_background">
+	android:layout_width="wrap_content">
 
 	<LinearLayout
 		android:layout_height="wrap_content"
@@ -27,7 +26,7 @@
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
 		android:orientation="horizontal"
-		android:layout_below="@id/mainLinearLayout1"
+		android:layout_below="@+id/mainLinearLayout1"
 		android:id="@+id/mainLinearLayout2"
 		android:paddingLeft="10dp">
 
@@ -40,10 +39,10 @@
 
 	<ScrollView
 		android:id="@+id/mainScrollView"
-		android:layout_below="@id/mainLinearLayout1"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_alignParentRight="true">
+		android:layout_alignParentRight="true"
+		android:layout_below="@+id/mainLinearLayout1">
 
 		<LinearLayout
 			android:layout_height="match_parent"
@@ -69,60 +68,78 @@
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
 				android:columnCount="2"
-				android:padding="10dp">
+				android:padding="5dp">
 
 				<GridLayout
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
 					android:columnCount="2"
 					android:id="@+id/GridLayout_contact_division"
-					android:padding="10dp">
+					android:padding="5dp">
 
 					<TextView
 						android:layout_height="wrap_content"
 						android:text="Division:"
 						android:layout_width="wrap_content"
 						android:textStyle="bold"
-						android:padding="10dp"/>
+						android:padding="10dp"
+						android:textSize="16sp"/>
 
 					<TextView
 						android:layout_height="wrap_content"
 						android:text="Dynamics"
 						android:layout_width="wrap_content"
 						android:id="@+id/division_name"
-						android:padding="10dp"/>
+						android:padding="10dp"
+						android:textSize="16sp"/>
 
 					<TextView
 						android:layout_height="wrap_content"
 						android:text="Department:"
 						android:layout_width="wrap_content"
 						android:textStyle="bold"
-						android:padding="10dp"/>
+						android:padding="10dp"
+						android:textSize="16sp"/>
 
 					<TextView
 						android:layout_height="wrap_content"
-						android:text="Strategic Engineering"
+						android:text="Strategic Engineering and second line"
 						android:layout_width="wrap_content"
 						android:id="@+id/dept_name"
 						android:padding="10dp"
 						android:minWidth="180dp"
-						android:maxWidth="180dp"/>
+						android:maxWidth="180dp"
+						android:textSize="16sp"/>
 
 					<TextView
 						android:layout_height="wrap_content"
 						android:text="Title:"
 						android:layout_width="wrap_content"
 						android:textStyle="bold"
-						android:padding="10dp"/>
+						android:padding="10dp"
+						android:textSize="16sp"/>
 
 					<TextView
 						android:layout_height="wrap_content"
-						android:text="Main Text"
+						android:text="Main Text and then the second line"
 						android:layout_width="wrap_content"
 						android:id="@+id/contact_title"
 						android:padding="10dp"
 						android:minWidth="180dp"
-						android:maxWidth="180dp"/>
+						android:maxWidth="180dp"
+						android:textSize="16sp"/>
+
+					<ImageView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:src="@drawable/call_icon"
+						android:onClick="ContactPhone"/>
+
+					<ImageView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:src="@drawable/email_icon"
+						android:onClick="ContactEmail"/>
 
 				</GridLayout>
 
@@ -134,17 +151,15 @@
 
 			</GridLayout>
 
-			<View
-				android:layout_height="1dp"
-				android:background="?android:attr/dividerVertical"
-				android:layout_width="match_parent"/>
-
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="Product Expertise"
 				android:layout_width="wrap_content"
-				android:padding="5dp"
-				android:textAppearance="?android:attr/textAppearanceMedium"/>
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textStyle="bold"
+				android:paddingLeft="5dp"
+				android:paddingTop="15dp"
+				android:paddingBottom="5dp"/>
 
 			<View
 				android:layout_height="1dp"
@@ -157,14 +172,17 @@
 				android:layout_width="wrap_content"
 				android:padding="5dp"
 				android:id="@+id/contact_products"
-				android:minWidth="500dp"/>
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="Region Focus"
 				android:layout_width="wrap_content"
-				android:padding="5dp"
-				android:textAppearance="?android:attr/textAppearanceMedium"/>
+				android:paddingLeft="5dp"
+				android:paddingTop="15dp"
+				android:paddingBottom="5dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textStyle="bold"/>
 
 			<View
 				android:layout_height="1dp"
@@ -176,15 +194,18 @@
 				android:text="Africa, Europe"
 				android:layout_width="wrap_content"
 				android:padding="5dp"
-				android:textSize="15sp"
-				android:id="@+id/contact_region"/>
+				android:id="@+id/contact_region"
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="Work Interests"
 				android:layout_width="wrap_content"
-				android:padding="5dp"
-				android:textAppearance="?android:attr/textAppearanceMedium"/>
+				android:paddingLeft="5dp"
+				android:paddingTop="15dp"
+				android:paddingBottom="5dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textStyle="bold"/>
 
 			<View
 				android:layout_height="1dp"
@@ -196,14 +217,18 @@
 				android:text="Missile Design, Flight Control, Simulation, Matlab"
 				android:layout_width="wrap_content"
 				android:padding="5dp"
-				android:id="@+id/work_interests"/>
+				android:id="@+id/work_interests"
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="Other Interests"
 				android:layout_width="wrap_content"
-				android:padding="5dp"
-				android:textAppearance="?android:attr/textAppearanceMedium"/>
+				android:paddingLeft="5dp"
+				android:paddingTop="15dp"
+				android:paddingBottom="5dp"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textStyle="bold"/>
 
 			<View
 				android:layout_height="1dp"
@@ -215,7 +240,8 @@
 				android:text="Basketball, Camping, Sky Diving, Share Trading"
 				android:layout_width="wrap_content"
 				android:padding="5dp"
-				android:id="@+id/personal_interests"/>
+				android:id="@+id/personal_interests"
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 		</LinearLayout>
 
