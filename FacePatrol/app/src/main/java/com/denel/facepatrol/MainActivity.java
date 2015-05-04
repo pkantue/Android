@@ -11,7 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import javax.crypto.*;
+import javax.crypto.*; // Java encryption of downloaded SQL databases
 import android.text.*;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -19,9 +19,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import java.util.*;
-import android.util.Log;
-
-import android.widget.AdapterView.*; // Java encryption of downloaded SQL databases
+import android.widget.AdapterView.*; 
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener 
 {
@@ -211,6 +209,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		// TODO: Implement this method
+		int id = item.getItemId();
+		if (id == R.id.action_settings)
+		{
+			// TODO: for clicked menu item
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	
 	
 	@Override
