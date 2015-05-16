@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<GridLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		rowCount="1"
+		columnCount="1"
+		android:columnCount="2"
+		android:layout_gravity="center_vertical|center_horizontal"
+		android:layout_marginTop="30dp">
+
+		<ImageView
+			android:layout_height="200dp"
+			android:layout_width="500dp"
+			android:src="@drawable/denel_aviation"
+			android:padding="5dp"/>
+
+		<ImageView
+			android:layout_height="200dp"
+			android:layout_width="500dp"
+			android:src="@drawable/denel_dynamics"
+			android:padding="5dp"/>
+
+		<ImageView
+			android:layout_height="200dp"
+			android:layout_width="500dp"
+			android:src="@drawable/denel_landsystem"
+			android:padding="5dp"/>
+
+		<ImageView
+			android:layout_height="200dp"
+			android:layout_width="500dp"
+			android:src="@drawable/denel_mechem_vehicles"
+			android:padding="5dp"/>
+
+		<ImageView
+			android:layout_height="200dp"
+			android:layout_width="500dp"
+			android:src="@drawable/denel_ism_gbads"
+			android:padding="5dp"/>
+
+		<ImageView
+			android:layout_height="200dp"
+			android:layout_width="500dp"
+			android:src="@drawable/denel_pmp"
+			android:padding="5dp"/>
+
+	</GridLayout>
+
+</LinearLayout>
+

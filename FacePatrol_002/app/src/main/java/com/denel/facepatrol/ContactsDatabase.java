@@ -191,9 +191,11 @@ public class ContactsDatabase extends SQLiteOpenHelper
 	private void initialData(SQLiteDatabase db)
 	{
 		String dataCols = "(name, surname, division, dept, title, email, phone, region, personal)";
-		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Vinnesh', 'Singh', 'Land Systems', 'Integration', 'Engineer', 'vinnesh@gmail.com','+23593392','All', 'running, reading books, superbikes, motoracing, braaie');");
-		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Paulin', 'Kantu', 'Dynamics', 'Engineering', 'Engineer', 'pkantue@gmail.com','+27834940168','All', 'basketball, braaie, model aircraft, camping');");
-		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Pamela', 'Nozipho', 'DCO', 'Communications', 'External', 'pam.e@gmail.com','+23339392','Middle-East', 'painting, baking, boxing, camping');");
-		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Tebogo', 'Ramaile', 'Aviation', 'Quality', 'Engineer', 'tebogoR@gmail.com','+23321392','Europe', 'running, braaie, motoracing, tennis');");
+		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Vinnesh', 'Singh', 'Land Systems', 'Integration', 'Engineer', 'vinnesh@gmail.com','+23593392','Americas', 'running, reading books, superbikes, motoracing, braaie');");
+		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Paulin', 'Kantu', 'Dynamics', 'Engineering', 'Flight Control Engineer', 'pkantue@gmail.com','+27834940168','All', 'basketball, braaie, model aircraft, camping');");
+		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Pamela', 'Nozipho', 'DCO', 'Communications', 'External Specialist', 'pam.e@gmail.com','+23339392','Middle-East', 'painting, baking, boxing, camping');");
+		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Tebogo', 'Ramaile', 'Aviation', 'Quality', 'Quality Engineer', 'tebogoR@gmail.com','+23321392','Europe', 'running, braaie, motoracing, tennis');");
+		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Marlene', 'Nel', 'Land Systems', 'Finance', 'Manager', 'MarleneNel@gmail.com','+0033234','South-East Asia', 'books, braaie, baking, river-rafting');");
+		db.execSQL("INSERT INTO " + dbtable + dataCols + " VALUES('Geraldine', 'Pillay', 'PMP', 'Legal', 'Industrial Manager', 'geralPillay@gmail.com','+24321595','South Africa', 'squash, sky-diving, running, movies');");
 	}
 }

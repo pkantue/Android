@@ -15,6 +15,7 @@ import android.view.*;
 import android.net.*;
 import android.app.*;
 import android.app.ActionBar.*;
+import android.view.ViewDebug.*;
 
 public class MainContactSearch extends FragmentActivity implements 
 ContactList.onContactItemListener, ActionBar.TabListener
@@ -24,6 +25,17 @@ ContactList.onContactItemListener, ActionBar.TabListener
 	public void onTabSelected(ActionBar.Tab p1, android.app.FragmentTransaction p2)
 	{
 		// TODO: Implement this method
+		int pos = p1.getPosition();
+		if (pos == 1)
+		{
+			
+			/*
+			Intent intent = new Intent(this,Products.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("pos",pos);
+			startActivity(intent);	
+			*/
+		}		
 	}
 
 	@Override

@@ -3,14 +3,14 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/mainScrollView"
 	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:layout_marginTop="10dp">
+	android:layout_height="wrap_content">
 
 	<LinearLayout
 		android:layout_height="match_parent"
 		android:layout_width="wrap_content"
 		android:orientation="vertical"
-		android:id="@+id/contact_details">
+		android:id="@+id/contact_details"
+		android:paddingTop="20dp">
 
 		<TextView
 			android:layout_height="wrap_content"

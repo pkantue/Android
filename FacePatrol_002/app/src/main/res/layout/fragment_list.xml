@@ -12,11 +12,11 @@
 		android:hint="Filter Contacts..."
 		android:id="@+id/contact_search"
 		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_marginTop="10dp"/>
+		android:layout_marginTop="20dp"/>
 
 	<ListView
 		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:id="@+id/android:list"/>
 
 </LinearLayout>

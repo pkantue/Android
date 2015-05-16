@@ -53,7 +53,6 @@ public class ContactList extends ListFragment
 
 		// bind List adapter to cursor_adapter
 		setListAdapter(cursor_adapter);
-		
 	}
 
 	@Override

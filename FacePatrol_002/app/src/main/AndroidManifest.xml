@@ -18,9 +18,9 @@
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	
     <application
-        android:allowBackup="true"
-        android:icon="@drawable/denel_logo_1"
-        android:label="@string/app_name"		
+		android:icon="@drawable/denel_logo_5"
+		android:label="@string/app_name"
+        android:allowBackup="true"		
         android:theme="@style/AppTheme" >
         <activity         
 			android:name=".SplashScreen">
@@ -32,8 +32,12 @@
             </intent-filter>
         </activity>
 		<activity
-			android:name=".MainContactSearch"
-			android:label="@string/app_name">
+			android:icon="@drawable/denel_logo_4"
+			android:name=".MainContactSearch">
+		</activity>
+		<activity
+			android:icon="@drawable/denel_logo_4"
+			android:name=".Products">
 		</activity>
     </application>
 
