@@ -1624,10 +1624,12 @@ containing a value of this type.
         public static final int denel_otr=0x7f020044;
         public static final int denel_pmp=0x7f020045;
         public static final int email_icon=0x7f020046;
-        public static final int ic_action_search_dark=0x7f020047;
-        public static final int ic_action_search_light=0x7f020048;
-        public static final int ic_launcher=0x7f020049;
-        public static final int pic_6=0x7f02004a;
+        public static final int ic_action_mail_light=0x7f020047;
+        public static final int ic_action_search_dark=0x7f020048;
+        public static final int ic_action_search_light=0x7f020049;
+        public static final int ic_action_select_all=0x7f02004a;
+        public static final int ic_launcher=0x7f02004b;
+        public static final int pic_6=0x7f02004c;
     }
     public static final class id {
         public static final int GridLayout_contact_division=0x7f070045;
@@ -1644,8 +1646,8 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f070030;
         public static final int action_mode_bar_stub=0x7f07002f;
         public static final int action_mode_close_button=0x7f070022;
-        public static final int action_search=0x7f07005c;
-        public static final int action_settings=0x7f07005b;
+        public static final int action_search=0x7f07005b;
+        public static final int action_settings=0x7f07005a;
         public static final int activity_chooser_view_content=0x7f070023;
         public static final int always=0x7f07000f;
         public static final int beginning=0x7f07000a;
@@ -1664,15 +1666,13 @@ containing a value of this type.
         public static final int contacts_listview=0x7f070053;
         public static final int decor_content_parent=0x7f070031;
         public static final int default_activity_button=0x7f070026;
-        public static final int demo_collection_button=0x7f070057;
-        public static final int demo_external_activity=0x7f070058;
         public static final int dept_name=0x7f070047;
-        public static final int detail_fragment=0x7f070056;
         public static final int dialog=0x7f070012;
         public static final int disableHome=0x7f070009;
         public static final int division_name=0x7f070046;
         public static final int dropdown=0x7f070013;
         public static final int edit_query=0x7f070035;
+        public static final int email_group=0x7f070059;
         public static final int end=0x7f07000c;
         public static final int expand_activities_button=0x7f070024;
         public static final int expanded_menu=0x7f07002a;
@@ -1683,10 +1683,9 @@ containing a value of this type.
         public static final int icon=0x7f070028;
         public static final int ifRoom=0x7f07000e;
         public static final int image=0x7f070025;
-        public static final int layoutsplashImageView1=0x7f070059;
-        public static final int layoutsplashTextView1=0x7f07005a;
+        public static final int layoutsplashImageView1=0x7f070055;
+        public static final int layoutsplashTextView1=0x7f070056;
         public static final int listMode=0x7f070001;
-        public static final int list_fragment=0x7f070055;
         public static final int list_item=0x7f070027;
         public static final int mainLinearLayout1=0x7f070051;
         public static final int mainScrollView=0x7f070042;
@@ -1696,6 +1695,7 @@ containing a value of this type.
         public static final int normal=0x7f070000;
         public static final int pager=0x7f070041;
         public static final int personal_interests=0x7f07004e;
+        public static final int productsoverviewGridLayout=0x7f070057;
         public static final int progress_circular=0x7f07001c;
         public static final int progress_horizontal=0x7f07001d;
         public static final int radio=0x7f07002d;
@@ -1709,6 +1709,7 @@ containing a value of this type.
         public static final int search_plate=0x7f07003b;
         public static final int search_src_text=0x7f07003c;
         public static final int search_voice_btn=0x7f070040;
+        public static final int select_all=0x7f070058;
         public static final int shortcut=0x7f07002c;
         public static final int showCustom=0x7f070008;
         public static final int showHome=0x7f070005;
@@ -1759,16 +1760,14 @@ containing a value of this type.
         public static final int contact_page=0x7f03001c;
         public static final int contact_search=0x7f03001d;
         public static final int dummy_page=0x7f03001e;
-        public static final int fragment_list=0x7f03001f;
-        public static final int fragment_section_dummy=0x7f030020;
-        public static final int fragment_section_launchpad=0x7f030021;
-        public static final int layout_splash=0x7f030022;
-        public static final int products_overview=0x7f030023;
-        public static final int services_overview=0x7f030024;
-        public static final int support_simple_spinner_dropdown_item=0x7f030025;
+        public static final int layout_splash=0x7f03001f;
+        public static final int products_overview=0x7f030020;
+        public static final int services_overview=0x7f030021;
+        public static final int support_simple_spinner_dropdown_item=0x7f030022;
     }
     public static final class menu {
-        public static final int main_menu=0x7f0c0000;
+        public static final int context_menu=0x7f0c0000;
+        public static final int main_menu=0x7f0c0001;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f0a0000;
@@ -1902,6 +1901,7 @@ containing a value of this type.
         public static final int Base_Widget_AppCompat_Toolbar=0x7f0b005f;
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b0060;
         public static final int MyActionBar=0x7f0b00ec;
+        public static final int MyActionBarTab=0x7f0b00ee;
         public static final int Platform_AppCompat=0x7f0b0061;
         public static final int Platform_AppCompat_Dialog=0x7f0b0062;
         public static final int Platform_AppCompat_Light=0x7f0b0063;

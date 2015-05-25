@@ -9,69 +9,55 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.database.*;
 import java.util.*;
 import android.util.*;
+import java.io.*;
+import java.nio.*;
 
 public class ContactsDatabase extends SQLiteOpenHelper
 {
 	public SimpleCursorAdapter cursor_adapter;
 
-	static final String dbname = "ContactsDB";
+	static final String dbname = "DenelDB";
 	static final String dbtable = "contacts_denel"; //contacts_example
-
+	static final String dbpath = "/data/data/com.denel.facepatrol/databases/";
+	private final Context mycontext;
 	// columns for Overview Table
 	static final String contact_name = "name";
+	private SQLiteDatabase mydb;
+	
 	
 	public ContactsDatabase(Context context) 
 	{
 		super(context, dbname, null, 1);
+		this.mycontext = context;
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase db)
-	{
-		// TODO: Implement this method
-		// delete table before moving on
-		db.execSQL("DROP TABLE if exists " + dbtable);
-		
-		db.execSQL("CREATE TABLE IF NOT EXISTS " + dbtable + 
-		"(_id INTEGER PRIMARY KEY AUTOINCREMENT," + 
-		"name VARCHAR(255), " + 
-		"surname VARCHAR(255), " + 
-		"division VARCHAR(255), " + 
-		"dept VARCHAR(255), " + 
-		"title VARCHAR(255), " + 
-		"email VARCHAR(255), " +
-		"phone VARCHAR(255), " + 
-		"twitter VARCHAR(255), " + 
-		"facebook VARCHAR(255), " + 
-		"region TEXT, " + 		
-		"product TEXT, " +
-		"work_int TEXT, " + 
-		"personal  TEXT, " +		
-		"birthday TEXT);");
-		
-		initialData(db);
+	public void onCreate(SQLiteDatabase db){
+		// do nothing
+		//mydb = this.getReadableDatabase();
 	}
-
+	
+	public void onCreateDatabase() 	
+	{
+		// enter code
+	}
+	
+	
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int p2, int p3)
 	{
 		// TODO: Implement this method
 		// delete table before moving on
-		db.execSQL("DROP TABLE if exists " + dbtable);
+		//db.execSQL("DROP TABLE if exists " + dbtable);
 		
-		this.onCreate(db);
+		//this.onCreate(db);
 	}
 	
 	// get all contacts into cursor
 	public Cursor getAllContacts ()
 	{
-		SQLiteDatabase db = this.getReadableDatabase();
-		String table_found = db.findEditTable(dbtable);
-		//if (table_found != null)
-		//{
-		Log.d("tag","Table found: " + dbtable);
-		//}
-		return db.query(dbtable,null,null,null,null,null,"name");
+		mydb = this.getReadableDatabase();
+		return mydb.query(dbtable,null,null,null,null,null,"name");
 	}
 	
 	public Cursor KeyWordsQuery (String constraint){
@@ -159,8 +145,7 @@ public class ContactsDatabase extends SQLiteOpenHelper
 	}
 	
 	public Cursor SimpleQuery(String constraint){
-		SQLiteDatabase db = this.getReadableDatabase();
-		return db.query(dbtable,null,"name like '%" + constraint + "%' " +
+		return mydb.query(dbtable,null,"name like '%" + constraint + "%' " +
 						"OR surname like '%" + constraint + "%' " +
 						"OR division like '%" + constraint + "%' " +
 						"OR dept like '%" + constraint + "%' " +
@@ -179,8 +164,7 @@ public class ContactsDatabase extends SQLiteOpenHelper
 
 	private Cursor QueryWithUserID(String constraint, String group_by,
 	String userid_sequence){
-		SQLiteDatabase db = this.getReadableDatabase();
-		return db.query(dbtable,null,"name like '%" + constraint + "%' " +
+		return mydb.query(dbtable,null,"name like '%" + constraint + "%' " +
 						"OR surname like '%" + constraint + "%' " +
 						"OR division like '%" + constraint + "%' " +
 						"OR dept like '%" + constraint + "%' " +

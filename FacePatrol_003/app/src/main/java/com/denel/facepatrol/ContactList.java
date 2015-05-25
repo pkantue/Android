@@ -1,19 +1,24 @@
 package com.denel.facepatrol;
 
 import android.app.*;
+import android.content.*;
 import android.database.*;
 import android.database.sqlite.*;
 import android.os.*;
 import android.support.v4.app.*;
 import android.text.*;
+import android.util.*;
 import android.view.*;
 import android.widget.*;
+import android.widget.AbsListView.*;
+import android.widget.AdapterView.*;
 
 import android.support.v4.app.ListFragment;
-import android.view.View.*;
+import android.widget.AdapterView.OnItemLongClickListener;
+import java.io.*;
 
 
-public class ContactList extends ListFragment 
+public class ContactList extends ListFragment
 {
 	onContactItemListener mCallback;
 	SQLiteDatabase db;
@@ -23,12 +28,14 @@ public class ContactList extends ListFragment
 	public static String contact_phone = "+2320343";
 	public static String contact_email = "plus@gmail.com";
 	private ListView lv = null;
+	public static String [] email_group = null;
 	
 	// The container Activity must implement this 
 	// interface so the frag can deliver messages
     public interface onContactItemListener {
         /** Called by HeadlinesFragment when a list item is selected */
         public void onContactSelected(Bundle bundle);
+		public void onGroupEmail(String[] email_grp);
 	}
 	
 	@Override
@@ -38,7 +45,7 @@ public class ContactList extends ListFragment
 		super.onCreate(savedInstanceState);
 		
 		//create database  based on the parent activity
-		final ContactsDatabase database = new ContactsDatabase(getActivity());
+		ContactsDatabase database = new ContactsDatabase(getActivity());
 		db_cursor = database.getAllContacts();
 		
 		// map the listview (from contact_list.xml) layout with columns of the cursor
@@ -48,7 +55,6 @@ public class ContactList extends ListFragment
 		new String[]{"name","surname"},
 		new int[]{R.id.contactlistname,R.id.contactlistsurname},
 		0);
-
 		// bind List adapter to cursor_adapter
 		setListAdapter(cursor_adapter);
 	}
@@ -94,9 +100,94 @@ public class ContactList extends ListFragment
 		
 		lv = getListView();
 		// set listview to have multipe selectable items
-		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 		
+		lv.setOnItemLongClickListener(new OnItemLongClickListener() {
 
+				@Override
+				public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+				{
+					// TODO: Implement this method
+					//((ListView) parent).setItemChecked(position, 
+					//((ListView) parent).isItemChecked(position)); 
+					
+					return true;
+					}			
+		});
+		
+		lv.setMultiChoiceModeListener(new MultiChoiceModeListener(){
+
+				@Override
+				public boolean onCreateActionMode(ActionMode mode, Menu menu)
+				{
+					// TODO: Implement this method
+					mode.getMenuInflater().inflate(R.menu.context_menu,menu);
+					mode.setTitle("Select items");
+					return true;
+				}
+
+				@Override
+				public boolean onPrepareActionMode(ActionMode p1, Menu p2)
+				{
+					// TODO: Implement this method
+					return false;
+				}
+
+				@Override
+				public boolean onActionItemClicked(ActionMode mode, MenuItem p2)
+				{
+					// If settings clicked, log results
+					switch (p2.getItemId()){
+						case R.id.email_group:
+							// close context menu
+							final int checkedCount = lv.getCheckedItemCount();
+							if (email_group != null)
+							{
+								if (checkedCount < 120){mCallback.onGroupEmail(email_group);}
+								else{Toast.makeText(null,"Number of email recipients exceed 120",Toast.LENGTH_SHORT).show();}
+							}
+							// to close the contextual action bar
+							//mode.finish();
+							
+							return true;
+						case R.id.select_all:
+							// enter code
+							int count = lv.getCount();
+							for (int i=0; i < count; i++)
+							{
+								lv.setItemChecked(i,true);
+							}
+							return true;
+						default:
+							return false;
+					}
+				}
+
+				@Override
+				public void onDestroyActionMode(ActionMode p1)
+				{
+					// TODO: Implement this method
+				}
+
+				@Override
+				public void onItemCheckedStateChanged(ActionMode p1, int p2, long p3, boolean p4)
+				{
+					// TODO: Implement this method
+					// Capture total checked items 
+					
+					final int checkedCount = lv.getCheckedItemCount();					
+					SparseBooleanArray int_array = lv.getCheckedItemPositions();
+					email_group = new String[checkedCount];
+					for ( int i = 0; i < checkedCount; i++){
+						int pos = int_array.keyAt(i);
+						Cursor db_cursor = (Cursor) lv.getItemAtPosition(pos);
+						email_group[i] = db_cursor.getString(db_cursor.getColumnIndex("email"));
+					} 
+					
+					p1.setSubtitle(String.valueOf(checkedCount) + " items selected");
+				}
+		});
+		
 		// if detail on the same view update it or else
 		// start contact detail activity
 		if(getActivity().findViewById(R.id.contact_details) != null)
@@ -113,7 +204,6 @@ public class ContactList extends ListFragment
 						//keywords query
 						cursor_query = database.KeyWordsQuery(constraint.toString());
 						cursor_query.moveToFirst();
-						//Log.d(null,"filter provider");
 					}
 					else{
 						// simple query
@@ -122,8 +212,8 @@ public class ContactList extends ListFragment
 					}
 					return cursor_query;
 				}
-			});
-	}
+		});		
+	}	
 	
 	@Override
 	public void onAttach(Activity activity)
@@ -139,8 +229,8 @@ public class ContactList extends ListFragment
             throw new ClassCastException(activity.toString()
 										 + " must implement onContactItemListener");
         }
-	}	
-	
+	}
+			
 	@Override
 	public void onListItemClick(ListView listview, View v, int position, long id)
 	{
@@ -165,9 +255,9 @@ public class ContactList extends ListFragment
 		else
 		{
 			// start a new activity with a home button if one-pane layout
-			//Intent intent = new Intent(getActivity(),ContactPic.class);
-			//intent.putExtras(args);
-			//startActivity(intent);
+			Intent intent = new Intent(getActivity(),ContactPic.class);
+			intent.putExtras(args);
+			startActivity(intent);
 		}
 		// Notify the parent activity of selected contact's details
 		mCallback.onContactSelected(args);

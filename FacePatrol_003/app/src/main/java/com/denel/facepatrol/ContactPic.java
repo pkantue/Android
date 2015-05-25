@@ -14,10 +14,10 @@ public class ContactPic extends Activity
 	public static String contact_email = "plus@gmail.com";
 
 	@Override
-	public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState)
+	public void onCreate(Bundle savedInstanceState)
 	{
 		// TODO: Implement this method
-		super.onCreate(savedInstanceState, persistentState);
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.contact_detail); 
 		//set the activity
 		Bundle args = new Bundle();

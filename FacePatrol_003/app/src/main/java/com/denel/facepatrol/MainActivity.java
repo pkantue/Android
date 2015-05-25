@@ -22,7 +22,9 @@ import android.net.*;
 import android.os.*;
 import android.support.v4.app.*;
 import android.support.v4.view.*;
+import android.util.*;
 import android.view.*;
+import java.io.*;
 
 import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
@@ -45,11 +47,18 @@ ContactList.onContactItemListener, ActionBar.TabListener {
      */
     ViewPager mViewPager;
 	String  contact_phone, contact_email;
+	Context mycontext;
+	
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+		
+		mycontext = getApplicationContext();
+		
+		//copy database from assets folder
+		copydatabase(mycontext);
+		
         // Create the adapter that will return a fragment for each of the three primary sections
         // of the app.
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
@@ -89,6 +98,18 @@ ContactList.onContactItemListener, ActionBar.TabListener {
                             .setTabListener(this));
         }
     }
+	
+	public void onGroupEmail(String[] email_grp)
+	{
+		// enter code here 
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		emailIntent.setData(Uri.parse("mailto:"));
+		emailIntent.putExtra(Intent.EXTRA_EMAIL,email_grp);
+		emailIntent.setType("message/rfc822");
+		emailIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+		startActivity(Intent.createChooser(emailIntent,"Send Group Email..."));
+	}
+	
 	@Override
 	public void onContactSelected(Bundle bundle)
 	{
@@ -126,7 +147,7 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 				case 0:
 					return new ContactList();
 				case 1:
-					return new ProductsFragment(); 	
+					return new ProductsFragment();
                 case 2:
                     return new ServicesFragment();
 
@@ -142,7 +163,6 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 
         @Override
         public CharSequence getPageTitle(int position) {
-			CharSequence string = null;
 			switch (position){
 				case 0:
 					return "Main Search";
@@ -174,4 +194,30 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 		//finish();
 	}
 
+	public void copydatabase(Context mcontext){
+		
+		String dbname = "DenelDB"; 
+		File outfile = mcontext.getDatabasePath(dbname); 
+		if (outfile.exists()) { 
+		return; 
+		}
+		outfile = mcontext.getDatabasePath(dbname + ".temp");
+		outfile.getParentFile().mkdirs();
+		try{			
+			InputStream instream =  mcontext.getAssets().open(dbname);
+			OutputStream outstream = new FileOutputStream(outfile);
+			//transfer bytes from instream to outstream
+			byte[] buffer = new byte[1024];
+			int length;
+			while((length = instream.read(buffer))>0){
+				outstream.write(buffer,0,length);
+			}
+			outstream.flush();
+			outstream.close();
+			instream.close();
+			outfile.renameTo(mcontext.getDatabasePath(dbname));
+		}catch (IOException e){
+			if (outfile.exists()) { outfile.delete();}
+		}
+	}
 }

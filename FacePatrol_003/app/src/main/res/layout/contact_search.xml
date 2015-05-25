@@ -17,6 +17,7 @@
 	<ListView
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"
+		android:choiceMode="multipleChoice"
 		android:id="@+id/android:list"/>
 
 </LinearLayout>

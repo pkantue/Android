@@ -37,8 +37,14 @@
 			android:name=".MainActivity">
 		</activity>
 		<activity
+			android:label="Contact Details"
 			android:icon="@drawable/denel_logo_4"
 			android:name=".ContactPic">
+		</activity>
+		<activity
+			android:label="Products and Services"
+			android:icon="@drawable/denel_logo_4"
+			android:name=".dummypage">
 		</activity>
     </application>
 

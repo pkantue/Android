@@ -2,9 +2,10 @@
 <ScrollView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/mainScrollView"
-	android:layout_width="310dp"
-	android:layout_height="wrap_content"
-	android:layout_marginTop="20dp">
+	android:layout_width="wrap_content"
+	android:layout_height="match_parent"
+	android:layout_marginTop="20dp"
+	android:layout_gravity="center">
 
 	<LinearLayout
 		android:layout_height="match_parent"
@@ -38,7 +39,8 @@
 				android:layout_width="wrap_content"
 				android:columnCount="2"
 				android:id="@+id/GridLayout_contact_division"
-				android:padding="5dp">
+				android:padding="5dp"
+				android:layout_gravity="center">
 
 				<TextView
 					android:layout_height="wrap_content"
@@ -91,7 +93,7 @@
 					android:minWidth="180dp"
 					android:maxWidth="180dp"
 					android:textSize="16sp"/>
-				
+
 				<TextView
 					android:layout_height="wrap_content"
 					android:text="Birthday:"
@@ -125,8 +127,8 @@
 			</GridLayout>
 
 			<ImageView
-				android:layout_height="300dp"
-				android:layout_width="300dp"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
 				android:src="@drawable/pic_6"
 				android:id="@+id/contact_picture"/>
 
@@ -222,8 +224,10 @@
 			android:layout_width="wrap_content"
 			android:padding="5dp"
 			android:id="@+id/personal_interests"
-			android:textAppearance="?android:attr/textAppearanceMedium"/>
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_marginBottom="10dp"/>
 
 	</LinearLayout>
 
 </ScrollView>
+
