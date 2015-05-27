@@ -25,6 +25,11 @@ import android.support.v4.view.*;
 import android.util.*;
 import android.view.*;
 import java.io.*;
+import java.net.*;
+import java.security.*;
+import java.security.spec.*;
+import javax.crypto.*;
+import javax.crypto.spec.*;
 
 import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
@@ -219,5 +224,71 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 		}catch (IOException e){
 			if (outfile.exists()) { outfile.delete();}
 		}
+	}
+	
+	private void startDownload (){
+		String url = "http://fdsfsd..sdf";
+		new DownloadFileAsync().execute(url);
+	}
+	
+	class DownloadFileAsync extends AsyncTask<String, String, String>
+	{
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			//showDialog(DIALOG_DOWNLOAD_PROGRESS);
+		}
+		
+		@Override
+		protected String doInBackground(String... f_url)
+		{
+			// TODO: Implement this method
+			int count;
+			try {
+				URL url = new URL(f_url[0]);
+				URLConnection connection = url.openConnection();
+				connection.connect();
+				// Get Music file length
+				int lenghtOfFile = connection.getContentLength();
+				// input stream to read file - with 8k buffer
+				InputStream input = new BufferedInputStream(url.openStream(),10*1024);
+				// Output stream to write file in SD card
+				OutputStream output = new FileOutputStream(Environment.
+				getExternalStorageDirectory().getPath()+"file_name.ext");
+				byte data[] = new byte[1024];
+				long total = 0;
+				while ((count = input.read(data)) != - 1) {
+					total += count;
+					// Publish the progress which triggers onProgressUpdate
+					//publishProgress( "" + ( int ) ((total * 100) / lenghtOfFil
+					// Write data to file
+					output.write(data, 0 , count);
+				}
+				// Flush output
+				output.flush();
+				// Close streams
+				output.close();
+				input.close();
+			} catch (Exception e) {
+				Log.e( "Error: " , e.getMessage());
+			}
+			return null;
+		}
+		
+	}
+	
+	// generate secretkey with a user-password or pin
+	private static SecretKey generateKey(char[] passphraseOrPin, byte[] salt) throws NoSuchAlgorithmException, InvalidKeySpecException { 
+		// Number of PBKDF2 hardening rounds to use. Larger values increase 
+		// computation time. You should select a value that causes computation 
+		// to take >100ms. 
+		final int iterations = 1000;
+		// Generate a 256-bit key
+		final int outputKeyLength = 256;
+		SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1"); 
+		KeySpec keySpec = new PBEKeySpec(passphraseOrPin, salt, iterations, outputKeyLength); 
+		SecretKey secretKey = secretKeyFactory.generateSecret(keySpec); 
+		return secretKey; 
 	}
 }
