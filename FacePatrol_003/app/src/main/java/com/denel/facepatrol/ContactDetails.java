@@ -1,15 +1,12 @@
 package com.denel.facepatrol;
 
-import android.support.v4.app.Fragment;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import java.util.zip.*;
+import android.graphics.drawable.*;
+import android.os.*;
+import android.support.v4.app.*;
 import android.util.*;
-import android.content.*;
-import android.net.*;
+import android.view.*;
+import android.widget.*;
+import java.io.*;
 
 public class ContactDetails extends Fragment 
 {
@@ -62,6 +59,20 @@ public class ContactDetails extends Fragment
 		region = (TextView)getActivity().findViewById(R.id.contact_region);
 		work = (TextView)getActivity().findViewById(R.id.work_interests);
 		personal = (TextView)getActivity().findViewById(R.id.personal_interests);
+		
+		ImageView img = (ImageView)getActivity().findViewById(R.id.contact_picture);
+		String pathName = getActivity().getApplicationContext().getDir("pictures",0).getAbsolutePath() +"/";
+		String filename = bundle.getString("name") + " " + bundle.getString("surname") +".jpg";
+		Log.d(null,pathName + filename);
+		File ip = new File(pathName+filename);
+		if (ip.exists())
+		{
+			Drawable d = Drawable.createFromPath(pathName+filename);
+			img.setImageDrawable(d);
+		}
+		else{
+			img.setImageResource(R.drawable.pic_6); // default image if no picture exists
+		}
 		
 		header.setText(bundle.getString("name") + " " + bundle.getString("surname"));
 		division.setText(bundle.getString("division"));

@@ -3,6 +3,7 @@ import android.app.*;
 import android.content.*;
 import android.os.*;
 import android.util.*;
+import android.view.*;
 
 public class Products extends Activity implements ActionBar.TabListener
 {
@@ -71,5 +72,30 @@ public class Products extends Activity implements ActionBar.TabListener
 		flag = 1;
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		// Inflate main_menu.xml 
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item)
+	{
+		// TODO: Implement this method
+		switch (item.getItemId())
+		{
+			case R.id.action_settings:
+				// add code
+				return true;
+			case R.id.action_exit:
+				// exit the application
+				finish();
+				return true;
+		}
+		return super.onMenuItemSelected(featureId, item);
+	}
 	
 }

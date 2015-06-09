@@ -35,6 +35,10 @@
         </activity>
 		<activity
 			android:icon="@drawable/denel_logo_4"
+			android:name=".PasswordInput">
+		</activity>
+		<activity
+			android:icon="@drawable/denel_logo_4"
 			android:name=".MainActivity">
 		</activity>
 		<activity

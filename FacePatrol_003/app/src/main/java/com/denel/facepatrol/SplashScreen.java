@@ -8,7 +8,7 @@ import android.view.Window;
 
 public class SplashScreen extends Activity
 {
-	private static int SPLASH_TIME_OUT = 4000;
+	private static int SPLASH_TIME_OUT = 2000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -27,7 +27,7 @@ public class SplashScreen extends Activity
 			@Override
 			public void run() {
 				//Intent i = new Intent(SplashScreen.this,MainContactSearch.class);
-				Intent i = new Intent(SplashScreen.this,MainActivity.class);
+				Intent i = new Intent(SplashScreen.this,PasswordInput.class);
 				startActivity(i);
 				
 				// close this activity

@@ -4,6 +4,7 @@ import android.app.*;
 import android.content.*;
 import android.database.*;
 import android.database.sqlite.*;
+import android.graphics.drawable.*;
 import android.os.*;
 import android.support.v4.app.*;
 import android.text.*;
@@ -12,10 +13,10 @@ import android.view.*;
 import android.widget.*;
 import android.widget.AbsListView.*;
 import android.widget.AdapterView.*;
+import java.io.*;
 
 import android.support.v4.app.ListFragment;
 import android.widget.AdapterView.OnItemLongClickListener;
-import java.io.*;
 
 
 public class ContactList extends ListFragment
@@ -278,6 +279,20 @@ public class ContactList extends ListFragment
 		work = (TextView)getActivity().findViewById(R.id.work_interests);
 		personal = (TextView)getActivity().findViewById(R.id.personal_interests);
 		birthday = (TextView)getActivity().findViewById(R.id.contact_birthday);
+		
+		ImageView img = (ImageView)getActivity().findViewById(R.id.contact_picture);
+		String pathName = getActivity().getApplicationContext().getDir("pictures",0).getAbsolutePath() +"/";
+		String filename = bundle.getString("name") + " " + bundle.getString("surname") +".jpg";
+		Log.d(null,pathName + filename);
+		File ip = new File(pathName+filename);
+		if (ip.exists())
+		{
+			Drawable d = Drawable.createFromPath(pathName+filename);
+			img.setImageDrawable(d);
+		}
+		else{
+			img.setImageResource(R.drawable.pic_6); // default image if no picture exists
+		}
 
 		header.setText(bundle.getString("name") + " " + bundle.getString("surname"));
 		division.setText(bundle.getString("division"));

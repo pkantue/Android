@@ -2,10 +2,12 @@ package com.denel.facepatrol;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.drawable.*;
 import android.net.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
+import java.io.*;
 
 public class ContactPic extends Activity
 {
@@ -22,7 +24,7 @@ public class ContactPic extends Activity
 		//set the activity
 		Bundle args = new Bundle();
 		args = getIntent().getExtras();
-		updateContactView(args);
+		updateContactView(args);		
 	}	
 
 	// ImageView onClick methods
@@ -45,8 +47,7 @@ public class ContactPic extends Activity
 	}
 	
 	public void updateContactView (Bundle bundle){
-		// enter code here
-
+		
 		// set main_xml variables
 		header = (TextView)findViewById(R.id.header_name);
 		division = (TextView)findViewById(R.id.division_name);
@@ -57,6 +58,19 @@ public class ContactPic extends Activity
 		work = (TextView)findViewById(R.id.work_interests);
 		birthday = (TextView)findViewById(R.id.contact_birthday);
 		personal = (TextView)findViewById(R.id.personal_interests);
+
+		ImageView img = (ImageView)findViewById(R.id.contact_picture);
+		String pathName = getApplicationContext().getDir("pictures",0).getAbsolutePath() +"/";
+		String filename = bundle.getString("name") + " " + bundle.getString("surname") +".jpg";
+		File ip = new File(pathName+filename);
+		if (ip.exists())
+		{
+			Drawable d = Drawable.createFromPath(pathName+filename);
+			img.setImageDrawable(d);
+		}
+		else{
+			img.setImageResource(R.drawable.pic_6); // default image if no picture exists
+		}	
 
 		header.setText(bundle.getString("name") + " " + bundle.getString("surname"));
 		division.setText(bundle.getString("division"));
@@ -71,4 +85,29 @@ public class ContactPic extends Activity
 		contact_email = bundle.getString("email");
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		// Inflate main_menu.xml 
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item)
+	{
+		// TODO: Implement this method
+		switch (item.getItemId())
+		{
+			case R.id.action_settings:
+				// add code
+				return true;
+			case R.id.action_exit:
+				// exit the application
+				finish();
+				return true;
+		}
+		return super.onMenuItemSelected(featureId, item);
+	}
 }

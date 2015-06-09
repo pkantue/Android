@@ -10,51 +10,6 @@
 		android:layout_width="wrap_content"
 		android:layout_gravity="center">
 
-		<GridLayout
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			rowCount="1"
-			columnCount="1"
-			android:columnCount="1">
-
-			<ImageView
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:src="@drawable/denel_aviation_fwmro"
-				android:padding="5dp"/>
-
-			<ImageView
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:src="@drawable/denel_aviation_rmro"
-				android:padding="5dp"/>
-
-			<ImageView
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:src="@drawable/denel_otr"
-				android:padding="5dp"/>
-
-			<ImageView
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:src="@drawable/denel_ism_logistics_support"
-				android:padding="5dp"/>
-
-			<ImageView
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:src="@drawable/denel_mechem_canine"
-				android:padding="5dp"/>
-
-			<ImageView
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:src="@drawable/denel_mechem_demining"
-				android:padding="5dp"/>
-
-		</GridLayout>
-
 	</ScrollView>
 
 </LinearLayout>

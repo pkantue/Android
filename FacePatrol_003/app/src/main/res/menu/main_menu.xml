@@ -1,11 +1,11 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    
-    <item
+<menu xmlns:android="http://schemas.android.com/apk/res/android">    
+	<item
         android:id="@+id/action_settings"
         android:title="Settings"/>
 	<item
-		android:id="@+id/action_search"
-		android:icon="@drawable/ic_action_search_dark"
-		android:showAsAction="ifRoom"/>
-    
+        android:id="@+id/action_download"
+        android:title="Download Photos"/>
+	<item
+		android:id="@+id/action_exit"
+        android:title="Exit"/>
 </menu>
