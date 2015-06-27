@@ -12,6 +12,9 @@ public class dummypage extends Activity
 		// TODO: Implement this method
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dummy_page);
-	}
-	
+		
+		Bundle args;
+		args = getIntent().getExtras();
+		setTitle(args.getString("title"));
+	}	
 }

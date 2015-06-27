@@ -81,6 +81,13 @@
 				android:src="@drawable/denel_aero"
 				android:padding="5dp"
 				android:id="@+id/productsoverview_aero"/>
+			
+			<ImageView
+				android:layout_height="200dp"
+				android:layout_width="match_parent"
+				android:src="@drawable/denel_otr"
+				android:padding="5dp"
+				android:id="@+id/productsoverview_otr"/>
 
 		</GridLayout>
 

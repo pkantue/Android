@@ -70,7 +70,7 @@ ContactList.onContactItemListener, ActionBar.TabListener {
         setContentView(R.layout.activity_main);
 		
 		mycontext = getApplicationContext();		
-		
+
         // Create the adapter that will return a fragment for each of the three primary sections
         // of the app.
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
@@ -210,8 +210,8 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 	private void downloadunzip () throws IOException{
 		// for now the file is from assets but will be downloaded later
 		String PATH = getApplicationContext().getDir("pictures",0).getAbsolutePath() +"/";
-		
 		InputStream is = getApplicationContext().getAssets().open("ContactsPics.zip");
+		
 		ZipInputStream zis = new ZipInputStream(new BufferedInputStream(is));
 		try {
 			ZipEntry ze;
@@ -486,6 +486,15 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 				return true;
 			case R.id.action_download:
 				try{downloadunzip();}catch (IOException e){}
+				return true;
+			case R.id.main_help:
+				// start activity using dummy class
+				Intent intent = new Intent(this,dummypage.class);
+				intent.putExtra("title","Help");
+				startActivity(intent); 
+				return true;
+			case R.id.main_about:
+				// enter intent about the company
 				return true;
 			case R.id.action_exit:
 				// exit the application

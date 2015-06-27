@@ -3,5 +3,62 @@
 
     <string name="app_name">Face Patrol</string>
     <string name="hello_world">Hello world!</string>
+	
+	<string name="denel_products">
+		\n
+		<b>Aircraft MRO</b> \n
+		Maintenance, repair and overhaul of fixed and rotary wing aircraft in military and civilian service.
+		\n\n
+		<b>Aircraft Production and Component Manufacturing</b> \n
+		Manufacturing of sheet metal and machined components for the aircraft industry. Assemble of aircraft.
+		\n\n
+		<b>Ammunition Filling Plants</b> \n
+		Modern filling plants for filling of a wide range of ammunition products.
+		\n\n
+		<b>Artillery Projectiles</b> \n
+		A full spectrum of 105mm and 155mm projectiles and carrier rounds, including pre-fragmented 105mm projectiles and rocket assisted 155mm projectiles.
+		\n\n
+		<b>Artillery Propulsion</b> \n
+		Charges for 155mm and 105mm artillery guns, including 155mm modular charges.
+		\n\n
+		<b>Artillery Systems</b> \n
+		105mm and 155mm towed and self-propelled artillery guns, including the G5 and G6 guns.
+		\n\n
+		<b>Brass Products and Ammunition Components</b> \n
+		A wide range of products are supplied to the industry.
+		\n\n
+		<b>Energetic Materials and Ball Powders</b> \n
+		Supplier of a wide range of products to the industry
+		\n\n
+		<b>Heavy Calibre Ammunition</b> \n
+		60mm and 81mm mortar ammunition, shells for 105mm as well as 155mm artillery guns, aircraft bombs, etc.
+		\n\n
+		<b>Hunting and Sporting Ammunition</b> \n
+		A range of high-quality ammunition for all popular calibres are manufactured by PMP.
+		\n\n
+		<b>Light Weapons</b> \n
+		5.56mm and 7.62mm machine guns, 60mm and 81mm mortar weapons, NTW20 anti-materiel rifle, 20mm rapid fire guns, etc.
+		\n\n
+		<b>Mine Action and Contraband</b> \n
+		Mine clearing and explosives detection.
+		\n\n
+		<b>Missiles and Standoff Weapons</b> \n
+		Air-air, ground-air, anti-armour and long-range standoff weapons.
+		\n\n
+		<b>Naval Ammunition</b> \n
+		A range of 76/62mm ammunition for naval guns.
+		\n\n
+		<b>Pyrotechnics</b> \n
+		Hand grenades, rifle grenades, high velocity and low velocity 40mm grenades, as well as a wide range of other pyrotechnical products.
+		\n\n
+		<b>Small and Medium Calibre Ammunition</b> \n
+		A wide range of ammunition ranging from 5.56mm to 35mm ammunition.
+		\n\n
+		<b>Turrets for Armoured Vehicles</b> \n
+		A range of turrets for armoured vehicles, including the 30mm LCT which is used on the New Generation Modular Combat Vehicle that Denel is supplying the the SANDF.
+		\n\n
+		<b>Unmanned Aerial Vehicles (UAVs)</b> \n
+		The range includes the Seeker II medium-range UAV, the Skua high-speed target drone and some interesting new developments.
+	</string>
 
 </resources>

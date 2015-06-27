@@ -20,7 +20,7 @@ public class PasswordInput extends Activity
 	Button submit;
 	EditText pass_submit;
 	EditText pass_confirm;
-	TextView internet_text;
+	TextView internet_text,forgot_pass;
 	String pass1_text;
 	String pass2_text;	
 	Boolean online_flag;
@@ -50,6 +50,7 @@ public class PasswordInput extends Activity
 		// show different layout 
 		if (encryptDatabaseExists){
 			setContentView(R.layout.password_login);
+			forgot_pass = (TextView)findViewById(R.id.login_forgot_password);
 		}else{
 			setContentView(R.layout.password_input);
 			pass_confirm = (EditText)findViewById(R.id.passwordconfirm);

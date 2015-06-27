@@ -6,6 +6,12 @@
         android:id="@+id/action_download"
         android:title="Download Photos"/>
 	<item
+		android:id="@+id/main_help"
+        android:title="Help"/>
+	<item
+		android:id="@+id/main_about"
+        android:title="About"/>
+	<item
 		android:id="@+id/action_exit"
         android:title="Exit"/>
 </menu>

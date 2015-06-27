@@ -282,7 +282,7 @@ public class ContactList extends ListFragment
 		
 		ImageView img = (ImageView)getActivity().findViewById(R.id.contact_picture);
 		String pathName = getActivity().getApplicationContext().getDir("pictures",0).getAbsolutePath() +"/";
-		String filename = bundle.getString("name") + " " + bundle.getString("surname") +".jpg";
+		String filename = bundle.getString("name") + " " + bundle.getString("surname") +".png";
 		Log.d(null,pathName + filename);
 		File ip = new File(pathName+filename);
 		if (ip.exists())

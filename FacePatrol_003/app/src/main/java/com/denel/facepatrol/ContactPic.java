@@ -61,7 +61,7 @@ public class ContactPic extends Activity
 
 		ImageView img = (ImageView)findViewById(R.id.contact_picture);
 		String pathName = getApplicationContext().getDir("pictures",0).getAbsolutePath() +"/";
-		String filename = bundle.getString("name") + " " + bundle.getString("surname") +".jpg";
+		String filename = bundle.getString("name") + " " + bundle.getString("surname") +".png";
 		File ip = new File(pathName+filename);
 		if (ip.exists())
 		{

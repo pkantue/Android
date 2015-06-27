@@ -1630,13 +1630,14 @@ containing a value of this type.
         public static final int denel_prop=0x7f02004a;
         public static final int email_icon=0x7f02004b;
         public static final int ic_action_download=0x7f02004c;
-        public static final int ic_action_mail_light=0x7f02004d;
-        public static final int ic_action_refresh=0x7f02004e;
-        public static final int ic_action_search_dark=0x7f02004f;
-        public static final int ic_action_search_light=0x7f020050;
-        public static final int ic_action_select_all=0x7f020051;
-        public static final int ic_launcher=0x7f020052;
-        public static final int pic_6=0x7f020053;
+        public static final int ic_action_help=0x7f02004d;
+        public static final int ic_action_mail_light=0x7f02004e;
+        public static final int ic_action_refresh=0x7f02004f;
+        public static final int ic_action_search_dark=0x7f020050;
+        public static final int ic_action_search_light=0x7f020051;
+        public static final int ic_action_select_all=0x7f020052;
+        public static final int ic_launcher=0x7f020053;
+        public static final int pic_6=0x7f020054;
     }
     public static final class id {
         public static final int GridLayout_contact_division=0x7f070045;
@@ -1648,14 +1649,14 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f070021;
         public static final int action_bar_title=0x7f070020;
         public static final int action_context_bar=0x7f070034;
-        public static final int action_download=0x7f07006a;
-        public static final int action_exit=0x7f07006b;
+        public static final int action_download=0x7f07006d;
+        public static final int action_exit=0x7f070070;
         public static final int action_menu_divider=0x7f070019;
         public static final int action_menu_presenter=0x7f07001a;
         public static final int action_mode_bar=0x7f070030;
         public static final int action_mode_bar_stub=0x7f07002f;
         public static final int action_mode_close_button=0x7f070022;
-        public static final int action_settings=0x7f070069;
+        public static final int action_settings=0x7f07006c;
         public static final int activity_chooser_view_content=0x7f070023;
         public static final int always=0x7f07000f;
         public static final int beginning=0x7f07000a;
@@ -1678,10 +1679,10 @@ containing a value of this type.
         public static final int dialog=0x7f070012;
         public static final int disableHome=0x7f070009;
         public static final int division_name=0x7f070046;
-        public static final int download_pics=0x7f070068;
+        public static final int download_pics=0x7f07006a;
         public static final int dropdown=0x7f070013;
         public static final int edit_query=0x7f070035;
-        public static final int email_group=0x7f070067;
+        public static final int email_group=0x7f070069;
         public static final int end=0x7f07000c;
         public static final int expand_activities_button=0x7f070024;
         public static final int expanded_menu=0x7f07002a;
@@ -1696,8 +1697,12 @@ containing a value of this type.
         public static final int layoutsplashTextView1=0x7f070056;
         public static final int listMode=0x7f070001;
         public static final int list_item=0x7f070027;
+        public static final int login_forgot_password=0x7f07005c;
+        public static final int login_help=0x7f07006b;
         public static final int mainLinearLayout1=0x7f070051;
         public static final int mainScrollView=0x7f070042;
+        public static final int main_about=0x7f07006f;
+        public static final int main_help=0x7f07006e;
         public static final int middle=0x7f07000b;
         public static final int never=0x7f07000d;
         public static final int none=0x7f070003;
@@ -1709,16 +1714,17 @@ containing a value of this type.
         public static final int passwordinputTextView1=0x7f07005a;
         public static final int passwordinput_signin=0x7f070057;
         public static final int personal_interests=0x7f07004e;
-        public static final int productsoverviewGridLayout=0x7f07005c;
-        public static final int productsoverview_aero=0x7f070065;
-        public static final int productsoverview_aviation=0x7f07005d;
-        public static final int productsoverview_dta=0x7f070063;
-        public static final int productsoverview_dynamics=0x7f07005e;
-        public static final int productsoverview_ism=0x7f070061;
-        public static final int productsoverview_landsys=0x7f07005f;
-        public static final int productsoverview_mechem=0x7f070060;
-        public static final int productsoverview_pmp=0x7f070062;
-        public static final int productsoverview_prop=0x7f070064;
+        public static final int productsoverviewGridLayout=0x7f07005d;
+        public static final int productsoverview_aero=0x7f070066;
+        public static final int productsoverview_aviation=0x7f07005e;
+        public static final int productsoverview_dta=0x7f070064;
+        public static final int productsoverview_dynamics=0x7f07005f;
+        public static final int productsoverview_ism=0x7f070062;
+        public static final int productsoverview_landsys=0x7f070060;
+        public static final int productsoverview_mechem=0x7f070061;
+        public static final int productsoverview_otr=0x7f070067;
+        public static final int productsoverview_pmp=0x7f070063;
+        public static final int productsoverview_prop=0x7f070065;
         public static final int progress_circular=0x7f07001c;
         public static final int progress_horizontal=0x7f07001d;
         public static final int radio=0x7f07002d;
@@ -1732,7 +1738,7 @@ containing a value of this type.
         public static final int search_plate=0x7f07003b;
         public static final int search_src_text=0x7f07003c;
         public static final int search_voice_btn=0x7f070040;
-        public static final int select_all=0x7f070066;
+        public static final int select_all=0x7f070068;
         public static final int shortcut=0x7f07002c;
         public static final int showCustom=0x7f070008;
         public static final int showHome=0x7f070005;
@@ -1812,6 +1818,7 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with=0x7f0a000d;
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000e;
         public static final int app_name=0x7f0a000f;
+        public static final int denel_products=0x7f0a0011;
         public static final int hello_world=0x7f0a0010;
     }
     public static final class style {
