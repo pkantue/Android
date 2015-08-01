@@ -1,0 +1,1 @@
+In this version the app was trasformed into fragments such that it will have a different look on phone and tablet. It started implementing action tabs but the design was not accommodating for the change.

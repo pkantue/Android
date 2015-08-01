@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<item 
+		android:id="@+id/select_all" 
+		android:icon="@drawable/ic_action_select_all"
+		android:showAsAction="ifRoom"/>
+	<item 
+		android:id="@+id/email_group" 
+		android:icon="@drawable/ic_action_mail_light"
+		android:showAsAction="ifRoom"/>
+	
+</menu>
