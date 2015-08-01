@@ -51,6 +51,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","Dynamics");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 			});
@@ -60,6 +61,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","Aviation");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 			});
@@ -69,6 +71,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","Land Systems");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 		});
@@ -78,6 +81,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","Mechem");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 			});
@@ -87,6 +91,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","PMP");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 			});
@@ -96,6 +101,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","Aerostructures");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 			});
@@ -105,6 +111,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","ISM");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 			});
@@ -114,6 +121,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","OTR");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 			});
@@ -123,6 +131,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","Training Academy");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 			});
@@ -132,6 +141,7 @@ public class ProductsFragment extends Fragment
 					// start activity
 					Intent intent = new Intent(getActivity(),dummypage.class);
 					intent.putExtra("title","Properties");
+					intent.putExtra("content",getResources().getString(R.string.denel_products));
 					startActivity(intent);
 				}
 			});

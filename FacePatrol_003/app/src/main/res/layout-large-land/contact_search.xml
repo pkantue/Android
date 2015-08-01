@@ -3,7 +3,8 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:orientation="horizontal">
+	android:orientation="horizontal"
+	android:background="#ffffff">
 
 	<FrameLayout
 		android:layout_height="match_parent"
@@ -15,14 +16,31 @@
 			android:layout_width="wrap_content"
 			android:orientation="vertical">
 
-			<EditText
+			<LinearLayout
 				android:layout_height="wrap_content"
-				android:ems="10"
 				android:layout_width="match_parent"
-				android:hint="Filter Contacts..."
-				android:id="@+id/contact_search"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_marginTop="20dp"/>
+				android:orientation="horizontal">
+
+				<EditText
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:layout_width="match_parent"
+					android:hint="Filter Contacts..."
+					android:id="@+id/contact_search"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginTop="20dp"
+					android:layout_weight="2"/>
+
+				<Button
+					android:layout_height="wrap_content"
+					style="?android:attr/buttonBarButtonStyle"
+					android:text="Clear"
+					android:layout_width="wrap_content"
+					android:layout_marginTop="20dp"
+					android:id="@+id/clear_button"
+					android:background="#A6C4DD"/>
+
+			</LinearLayout>
 
 			<ListView
 				android:layout_height="wrap_content"
@@ -48,14 +66,29 @@
 			android:id="@+id/contact_details"
 			android:paddingTop="20dp">
 
-			<TextView
+			<LinearLayout
 				android:layout_height="wrap_content"
-				android:text="Vinnesh Singh"
-				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:layout_width="wrap_content"
-				android:textStyle="bold|italic"
-				android:paddingLeft="10dp"
-				android:id="@+id/header_name"/>
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:text="Vinnesh Singh"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:layout_width="wrap_content"
+					android:textStyle="bold|italic"
+					android:paddingLeft="10dp"
+					android:id="@+id/header_name"
+					android:layout_marginRight="40dp"
+					android:layout_gravity="center_vertical"/>
+
+				<ImageView
+					android:layout_height="40dp"
+					android:layout_width="40dp"
+					android:src="@drawable/ic_action_edit"
+					android:onClick="ContactEdit"/>
+
+			</LinearLayout>
 
 			<View
 				android:layout_height="1dp"
@@ -67,7 +100,7 @@
 				android:layout_width="wrap_content"
 				android:columnCount="2"
 				android:padding="5dp"
-				android:layout_gravity="center">
+				android:layout_gravity="left">
 
 				<GridLayout
 					android:layout_height="wrap_content"
@@ -161,8 +194,8 @@
 				</GridLayout>
 
 				<ImageView
-					android:layout_height="wrap_content"
-					android:layout_width="wrap_content"
+					android:layout_height="300dp"
+					android:layout_width="300dp"
 					android:src="@drawable/pic_6"
 					android:id="@+id/contact_picture"/>
 
@@ -185,11 +218,11 @@
 
 			<TextView
 				android:layout_height="wrap_content"
-				android:text="Umkhonto, A-Darter, Mokopa, Ingwe"
 				android:layout_width="wrap_content"
 				android:padding="5dp"
 				android:id="@+id/contact_products"
-				android:textAppearance="?android:attr/textAppearanceMedium"/>
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:text="Umkhonto, A-Darter, Mokopa, Ingwe, This is a dummy text to fill the whole width of the screen to adjust the position of the picture and verify that it doesnt shift with text."/>
 
 			<TextView
 				android:layout_height="wrap_content"

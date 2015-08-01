@@ -4,92 +4,101 @@
 	android:layout_width="fill_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	android:background="#FFFFFF">
+	android:background="#FFFFFF"
+	android:layout_gravity="center">
 
 	<ScrollView
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
 		android:layout_gravity="center">
 
-		<GridLayout
+		<LinearLayout
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			rowCount="1"
-			columnCount="1"
-			android:columnCount="1"
+			android:orientation="vertical"
 			android:id="@+id/productsoverviewGridLayout">
 
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_aviation"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_aviation"/>
+				android:id="@+id/productsoverview_aviation"
+				android:layout_gravity="center"/>
 
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_dynamics"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_dynamics"/>
+				android:id="@+id/productsoverview_dynamics"
+				android:layout_gravity="center"/>
 
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_landsys"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_landsys"/>
+				android:id="@+id/productsoverview_landsys"
+				android:layout_gravity="center"/>
 
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_mechem"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_mechem"/>
+				android:id="@+id/productsoverview_mechem"
+				android:layout_gravity="center"/>
 
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_ism"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_ism"/>
+				android:id="@+id/productsoverview_ism"
+				android:layout_gravity="center"/>
 
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_pmp"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_pmp"/>
+				android:id="@+id/productsoverview_pmp"
+				android:layout_gravity="center"/>
 
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_dta"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_dta"/>
+				android:id="@+id/productsoverview_dta"
+				android:layout_gravity="center"/>
 
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_prop"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_prop"/>
+				android:id="@+id/productsoverview_prop"
+				android:layout_gravity="center"/>
 
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_aero"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_aero"/>
-			
+				android:id="@+id/productsoverview_aero"
+				android:layout_gravity="center"/>
+
 			<ImageView
-				android:layout_height="200dp"
-				android:layout_width="500dp"
+				android:layout_height="300dp"
+				android:layout_width="800dp"
 				android:src="@drawable/denel_otr"
 				android:padding="5dp"
-				android:id="@+id/productsoverview_otr"/>
+				android:id="@+id/productsoverview_otr"
+				android:layout_gravity="center"/>
 
-		</GridLayout>
+		</LinearLayout>
 
 	</ScrollView>
 

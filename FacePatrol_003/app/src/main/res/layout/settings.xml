@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="#FFFFFF">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Delete Photo Database"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:layout_margin="10dp"
+		android:id="@+id/delete_database"/>
+
+	<View
+		android:layout_height="2dp"
+		android:background="?android:attr/dividerVertical"
+		android:layout_width="match_parent"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Code of Ethics"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:layout_margin="10dp"
+		android:id="@+id/code_ethics"/>
+
+	<View
+		android:layout_height="2dp"
+		android:background="?android:attr/dividerVertical"
+		android:layout_width="match_parent"/>
+
+</LinearLayout>
+

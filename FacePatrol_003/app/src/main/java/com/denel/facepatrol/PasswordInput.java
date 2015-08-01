@@ -31,6 +31,7 @@ public class PasswordInput extends Activity
 	String dbname = "DenelDB";
 	String dbname_en = "EncryptDB";	
 	int passw_count = 0;
+	ImageView pass_help;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -45,6 +46,9 @@ public class PasswordInput extends Activity
 		File outfile = getApplicationContext().getDatabasePath(dbname_en); 		
 		if (outfile.exists()){
 			encryptDatabaseExists = true;
+			//delete 'denelDB' file in the event it exists - Housekeeping
+			//File infile_err = getApplicationContext().getDatabasePath(dbname);
+			//if(infile_err.exists()){infile_err.delete();}
 		}
 		
 		// show different layout 
@@ -54,6 +58,22 @@ public class PasswordInput extends Activity
 		}else{
 			setContentView(R.layout.password_input);
 			pass_confirm = (EditText)findViewById(R.id.passwordconfirm);
+			
+			pass_help = (ImageView)findViewById(R.id.passwordinput_about);
+			pass_help.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View p1)
+					{
+						AlertDialog.Builder builder = new AlertDialog.Builder(PasswordInput.this); 
+						builder.setTitle("Password Recommendation")
+							.setMessage("Enter at least 4-digit password") 
+							.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+								public void onClick(DialogInterface dialog, int id) { 
+									// FIRE ZE MISSILES! 
+								} });
+						builder.show();
+					}				
+			});
 		}
 		
 		submit = (Button)findViewById(R.id.passwordSubmit);
@@ -66,6 +86,22 @@ public class PasswordInput extends Activity
 		}
 		else{
 			internet_text.setText("Unable to connect to server. Please check your network connection");
+		}
+		
+		if (encryptDatabaseExists){
+		forgot_pass.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View p1){
+				AlertDialog.Builder builder = new AlertDialog.Builder(PasswordInput.this); 
+				builder.setTitle("Application Security and Access")
+					.setMessage(R.string.password_help) 
+					.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+						public void onClick(DialogInterface dialog, int id) { 
+							// FIRE ZE MISSILES! 
+						} });
+				builder.show();
+			}
+		});
 		}
 
 		pass_submit.addTextChangedListener(new TextWatcher() {
@@ -208,11 +244,19 @@ public class PasswordInput extends Activity
 		// TODO: Implement this method
 		switch (item.getItemId())
 		{
-			case R.id.download_pics:
-				// add code
-				Toast.makeText(this,getApplicationContext().getDir("pictures",0).getAbsolutePath(),Toast.LENGTH_SHORT).show();
-				return true;
-			case R.id.action_exit:
+			case R.id.login_help:
+				AlertDialog.Builder builder = new AlertDialog.Builder(this); 
+				builder.setTitle("Application Security and Access")
+				.setMessage(R.string.password_help) 
+				.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+					public void onClick(DialogInterface dialog, int id) { 
+				// FIRE ZE MISSILES! 
+				} });
+				//.setNegativeButton("Cancel", new DialogInterface.OnClickListener() { 
+				//	public void onClick(DialogInterface dialog, int id) { 
+				// User cancelled the dialog 
+				//} });
+				builder.show();
 				// exit the application
 				//finish();
 				return true;
@@ -312,8 +356,7 @@ public class PasswordInput extends Activity
 		fis.close();
 		// delete the encrypted file
 		if(infile.exists()){infile.delete();}
-	}
-	 
+	}	 
 	
 	// generate secretkey with a user-password or pin
 	private static SecretKey generateKey(char[] passphraseOrPin, byte[] salt) throws NoSuchAlgorithmException, InvalidKeySpecException { 

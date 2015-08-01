@@ -24,17 +24,18 @@ import android.support.v4.app.*;
 import android.support.v4.view.*;
 import android.util.*;
 import android.view.*;
+import android.widget.*;
 import java.io.*;
 import java.net.*;
 import java.security.*;
 import java.security.spec.*;
+import java.util.zip.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
 
 import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import java.util.zip.*;
 
 public class MainActivity extends FragmentActivity implements 
 ContactList.onContactItemListener, ActionBar.TabListener {
@@ -52,7 +53,7 @@ ContactList.onContactItemListener, ActionBar.TabListener {
      * time.
      */
     ViewPager mViewPager;
-	String  contact_phone, contact_email;
+	String  contact_phone, contact_email, feedback_subject, feedback_body;
 	Context mycontext;
 	String pass1_text = null;
 	SecretKey skey = null;
@@ -116,6 +117,7 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 	{
 		// TODO: Implement this method
 		super.onStart();
+		
 		Bundle bundle;
 		bundle = getIntent().getExtras();
 		if (bundle != null){
@@ -249,19 +251,32 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 	public void onGroupEmail(String[] email_grp)
 	{
 		// enter code here 
-		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
 		emailIntent.setData(Uri.parse("mailto:"));
 		emailIntent.putExtra(Intent.EXTRA_EMAIL,email_grp);
-		emailIntent.setType("message/rfc822");
+		//emailIntent.setType("message/rfc822");
 		emailIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 		startActivity(Intent.createChooser(emailIntent,"Send Group Email..."));
 	}
 	
 	@Override
-	public void onContactSelected(Bundle bundle)
+	public void onContactSelected(Bundle args)
 	{
-		contact_phone = bundle.getString("phone");
-		contact_email = bundle.getString("email");
+		contact_phone = args.getString("phone");
+		contact_email = args.getString("email");
+		feedback_body = "Face Patrol - Contact Update: "+args.getString("name")+" "+args.getString("surname");
+		feedback_subject = "Please edit the contact information below BEFORE submission \n\n"+
+			"Name: "+args.getString("name")+" "+args.getString("surname")+"\n"+
+			"Division: "+args.getString("division")+"\n"+
+			"Department: " +args.getString("dept")+"\n"+
+			"Title: " +args.getString("title")+"\n"+
+			"Products Expertise: " +args.getString("product")+"\n"+
+			"Regions: " +args.getString("region")+"\n"+
+			"Work Interests: " +args.getString("work_int")+"\n"+
+			"Personal Interests: " +args.getString("personal")+"\n"+
+			"Birthday: "+args.getString("birthday")+"\n"+
+			"Phone No: "+args.getString("phone")+"\n"+
+			"Email Address: "+args.getString("email")+"\n";	
 	}
 
     @Override
@@ -332,13 +347,40 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 	}
 
 	public void ContactEmail (View view){
-		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
 		emailIntent.setData(Uri.parse("mailto:"));
 		emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{contact_email});
-		emailIntent.setType("message/rfc822");
+		//emailIntent.setType("message/rfc822");
 		emailIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 		startActivity(Intent.createChooser(emailIntent,"Send Email..."));
 		//finish();
+	}
+	
+	public void ContactEdit (View view){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this); 
+		builder.setTitle("Contact Information Feedback")
+			.setMessage("You're about to edit and send personal information. "+
+			"Please note that the current database will only reflect your modification"+
+			" once the IT department verifies the change and the updated database"+
+			" is synced to your device. \n \n Do you want to continue?") 
+			.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+				public void onClick(DialogInterface dialog, int id) { 
+					Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+					emailIntent.setData(Uri.parse("mailto:")); 
+					emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{"pkantue@gmail.com"}); // this email address will change
+					emailIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+					emailIntent.putExtra(Intent.EXTRA_SUBJECT,feedback_subject);
+					emailIntent.putExtra(Intent.EXTRA_TEXT,feedback_body);
+					startActivity(Intent.createChooser(emailIntent,"Send Email..."));
+				} })
+			.setNegativeButton("Cancel", new DialogInterface.OnClickListener() { 
+		    	public void onClick(DialogInterface dialog, int id) { 
+					// User cancelled the dialog 
+				} 
+			});
+		builder.show();
+		// exit the application
+		//finish();		
 	}
 	
 	// generate secretkey with a user-password or pin
@@ -482,19 +524,32 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 		switch (item.getItemId())
 		{
 			case R.id.action_settings:
-				// add code
+				Intent intent1 = new Intent(this,Settings.class);
+				startActivity(intent1);
 				return true;
 			case R.id.action_download:
 				try{downloadunzip();}catch (IOException e){}
 				return true;
 			case R.id.main_help:
 				// start activity using dummy class
-				Intent intent = new Intent(this,dummypage.class);
-				intent.putExtra("title","Help");
-				startActivity(intent); 
+				run_quick_tips();
+				//Intent intent = new Intent(this,dummypage.class);
+				//intent.putExtra("title","Help");
+				//startActivity(intent); 
 				return true;
 			case R.id.main_about:
-				// enter intent about the company
+				AlertDialog.Builder builder = new AlertDialog.Builder(this); 
+				builder.setTitle("About")
+					.setMessage(R.string.about) 
+					.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+						public void onClick(DialogInterface dialog, int id) { 
+							// FIRE ZE MISSILES! 
+						} });
+				//.setNegativeButton("Cancel", new DialogInterface.OnClickListener() { 
+				//	public void onClick(DialogInterface dialog, int id) { 
+				// User cancelled the dialog 
+				//} });
+				builder.show();
 				return true;
 			case R.id.action_exit:
 				// exit the application
@@ -504,6 +559,20 @@ ContactList.onContactItemListener, ActionBar.TabListener {
 		return super.onMenuItemSelected(featureId, item);
 	}
 	
+	public void run_quick_tips(){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this); 
+		builder.setTitle("Quick Tips")
+			.setMessage(R.string.quick_tips) 
+			.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+				public void onClick(DialogInterface dialog, int id) { 
+					// FIRE ZE MISSILES! 
+				} });
+		//.setNegativeButton("Cancel", new DialogInterface.OnClickListener() { 
+		//	public void onClick(DialogInterface dialog, int id) { 
+		// User cancelled the dialog 
+		//} });
+		builder.show();
+	}
 	
 	
 	

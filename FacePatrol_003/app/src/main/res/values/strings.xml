@@ -3,7 +3,65 @@
 
     <string name="app_name">Face Patrol</string>
     <string name="hello_world">Hello world!</string>
-	
+    <string name="about">Face Patrol is a database portal
+		that addresses the need for real-time search and communication with
+		a person or a group of people with particular attributes while maintaining
+		the highest level of information security.\n \n
+		
+		The objective of this application is to also put a \'face to the name\'
+		so as to increase networking within a particular organisation and leverage on 
+		the available capabilities. \n \n
+	</string>
+	<string name="quick_tips">
+		<b> Download Contact Photos </b> \n \n 
+		> \t When you start the app, the contact photos will not be part of the selected contact information. \n \n
+		> \t You are required to press your Menu button and select \'Download Photos\'. 
+		Now the contact information will include photos. \n \n \n
+		<b>Contact search</b> \n \n
+		> \t The search function is in real-time, recursive and is not case-sensitive. 
+		The use of special characters (unless absolutely required) and the ENTER key is not
+		recommended.\n \n
+		> \t The search is made through the use of keywords. Example: entering \'denel\' classifies as a keyword. \n \n
+		> \t The search filters the contacts that share information with the common keyword. 
+		Example: keyword \'Dynamics\' lists only the contacts that work in Denel Dynamics \n \n
+		> \t Multiple keywords can also be used to get more accurate searches. Example: keyword \'dynamics developer\' 
+		filters all contacts with \'dynamics\' AND \'developer\' in their information. \n \n
+		> \t Search of contact birthdays is done through abbreviating the months of the year. Example: keyword \'jan\' will 
+		search contacts whose birthdays are in January. \n \n \n
+		<b>Contact Phone and Email</b> \n \n
+		> \t Each contact has an phone number and email address for you to use to communicate with that person.\n \n
+		> \t This is acheived by sending the contact information to your device\'s applications which handles telephony and email \n \n \n
+		<b>Multi-Contact Function</b> \n \n
+		> \t Multiple contacts can be selected through \'press and hold\' of a contact. \n \n
+		> \t Multiple contacts can be selected manualy and by using the \'Select All\' icon. \n \n
+		> \t The \'Email\' icon can be used to communicate with multiple contacts. \n \n \n
+		<b>Products Overview</b> \n \n
+		> \t Denel entities have being listed to educate and provide a quick 
+		overview of the capabilities of each entity \n \n
+		> \t The information contained here has been taken from www.denel.co.za
+		
+	</string>
+	<string name="password_help">
+		This application contains confidential information and has been protected
+		through using Advanced Encryption Standard (AES) algorithms and user PIN.\n\n
+		In the event that you forget your PIN, the application will have to be <b>uninstalled</b> and <b>reinstalled</b>.
+		This approach has been taken to minimize the risk of a security breach. \n\n
+		For more information on AES encryption visit http://csrc.nist.gov/archive/aes/rijndael/wsdindex.html
+	</string>
+	<string name="code_of_ethics">As a corporate entity, Denel draws the attention of many stakeholders, 
+		which makes it paramount that the conduct of all those that act on Denel\'s behalf as Directors, officers, 
+		employees and suppliers to be beyond reproach. Such conduct must be able to measure up to Denel\' values of 
+		performance, integrity, innovation, caring and accountability and be able to stand to scrutiny. \n\n
+		
+		Denel recognises that it is responsible for instilling the culture of good ethics in its employees and has 
+		a role to play to inculcate such a culture in the environment in which it operates, but it depends on the 
+		commitment of all those that do business with it or have an interest in good corporate citizenship for this 
+		to succeed. \n\n
+		
+		Therefore, Denel enjoins all stakeholders to support the organisation in promoting ethical conduct 
+		for common good and to resort suspected unethical conduct affecting Denel to Denel through the mechanisms 
+		provided in the online downloadable document in order for action to be taken. 
+	</string>
 	<string name="denel_products">
 		\n
 		<b>Aircraft MRO</b> \n

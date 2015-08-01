@@ -67,7 +67,8 @@ public class ContactList extends ListFragment
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.contact_search,container,false);
 		// identify editext object
-		EditText text_search = (EditText)v.findViewById(R.id.contact_search);
+		final EditText text_search = (EditText)v.findViewById(R.id.contact_search);
+		Button clear_button = (Button)v.findViewById(R.id.clear_button);
 
 		// add listener based on text changed
 		text_search.addTextChangedListener(new TextWatcher() {
@@ -78,6 +79,17 @@ public class ContactList extends ListFragment
 				public void beforeTextChanged(CharSequence s, int start,int count, int after){}
 				public void onTextChanged(CharSequence s, int start,int before, int count){} 
 			});
+			
+		// add button click listener
+		clear_button.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View p1)
+				{
+					// TODO: Implement this method
+					text_search.setText("");
+				}
+		});
 		
 		return v;
 	}
@@ -102,20 +114,20 @@ public class ContactList extends ListFragment
 		lv = getListView();
 		// set listview to have multipe selectable items
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-		
+		/*
 		lv.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 				@Override
 				public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
 				{
 					// TODO: Implement this method
-					//((ListView) parent).setItemChecked(position, 
-					//((ListView) parent).isItemChecked(position)); 
+					((ListView) parent).setItemChecked(position, 
+					((ListView) parent).isItemChecked(position)); 
 					
 					return true;
-					}			
+					}
 		});
-		
+		*/
 		lv.setMultiChoiceModeListener(new MultiChoiceModeListener(){
 
 				@Override
@@ -126,12 +138,23 @@ public class ContactList extends ListFragment
 					mode.setTitle("Select items");
 					return true;
 				}
-
+				
 				@Override
-				public boolean onPrepareActionMode(ActionMode p1, Menu p2)
+				public void onItemCheckedStateChanged(ActionMode p1, int p2, long p3, boolean p4)
 				{
 					// TODO: Implement this method
-					return false;
+					// Capture total checked items 
+
+					final int checkedCount = lv.getCheckedItemCount();					
+					SparseBooleanArray int_array = lv.getCheckedItemPositions();
+					email_group = new String[checkedCount];
+					for ( int i = 0; i < checkedCount; i++){
+						int pos = int_array.keyAt(i);
+						Cursor db_cursor = (Cursor) lv.getItemAtPosition(pos);
+						email_group[i] = db_cursor.getString(db_cursor.getColumnIndex("email"));
+					} 
+
+					p1.setSubtitle(String.valueOf(checkedCount) + " items selected");
 				}
 
 				@Override
@@ -163,30 +186,20 @@ public class ContactList extends ListFragment
 							return false;
 					}
 				}
+				
+				@Override
+				public boolean onPrepareActionMode(ActionMode p1, Menu p2)
+				{
+					// TODO: Implement this method
+					return false;
+				}
 
 				@Override
 				public void onDestroyActionMode(ActionMode p1)
 				{
 					// TODO: Implement this method
 				}
-
-				@Override
-				public void onItemCheckedStateChanged(ActionMode p1, int p2, long p3, boolean p4)
-				{
-					// TODO: Implement this method
-					// Capture total checked items 
-					
-					final int checkedCount = lv.getCheckedItemCount();					
-					SparseBooleanArray int_array = lv.getCheckedItemPositions();
-					email_group = new String[checkedCount];
-					for ( int i = 0; i < checkedCount; i++){
-						int pos = int_array.keyAt(i);
-						Cursor db_cursor = (Cursor) lv.getItemAtPosition(pos);
-						email_group[i] = db_cursor.getString(db_cursor.getColumnIndex("email"));
-					} 
-					
-					p1.setSubtitle(String.valueOf(checkedCount) + " items selected");
-				}
+				
 		});
 		
 		// if detail on the same view update it or else
@@ -246,7 +259,7 @@ public class ContactList extends ListFragment
 		Cursor db_cursor = (Cursor) listview.getItemAtPosition(position);
 		
 		args = SetContacts(db_cursor);		
-		
+		v.setSelected(true);
 		// if detail on the same view update it or else
 		// start contact detail activity
 		if(getActivity().findViewById(R.id.contact_details) != null)

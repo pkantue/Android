@@ -51,6 +51,11 @@
 			android:icon="@drawable/denel_logo_4"
 			android:name=".dummypage">
 		</activity>
+		<activity
+			android:label="Settings"
+			android:icon="@drawable/denel_logo_4"
+			android:name=".Settings">
+		</activity>
     </application>
 
 </manifest>
